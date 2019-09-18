@@ -221,22 +221,30 @@ The `Update` will look more or less the same, we just need to modify the button 
 
 ```html
 <template>
-<mdc-layout-grid>
-  <mdc-layout-cell desktop=12 tablet=8>
-    <form>
-      <div>
-        <mdc-textfield v-model="product.name" label="Product Name" />
-      </div>
-      <div>
-        <mdc-textfield v-model="product.description" label="Product Description" multiline rows="8" cols="40" />
-      </div>
-      <div>
-        <mdc-textfield v-model.number="product.price" label="Product Price" />
-      </div>
-      <mdc-button @click="updateProduct" raised>update product</mdc-button>
-    </form>
-  </mdc-layout-cell>
-</mdc-layout-grid>
+<v-form>
+  <v-container>
+    <v-row>
+      <v-col>
+        <v-text-field label="Product Name" v-model="product.name"></v-text-field>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col>
+        <v-textarea label="Description" v-model="product.description" hint="Product Description"></v-textarea>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col>
+        <v-text-field label="Product Price" v-model.number="product.price"></v-text-field>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col>
+        <v-btn @click="updateProduct" color="primary">UPDATE PRODUCT</v-btn>
+      </v-col>
+    </v-row>
+  </v-container>
+</v-form>
 </template>
 ```
 
