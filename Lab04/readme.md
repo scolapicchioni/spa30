@@ -35,7 +35,7 @@ Install the following:
     - Go to the folder `Lab04\Start\MarketPlace`.
     - Name the Solution `BackEnd`. 
     - Name the Project `BackEnd`
-    - Select `Create
+    - Select `Create`
 - In the `Create a new ASP.NET Core Web Application` window:
     - Select `.NET Core`
     - Select `ASP .NET Core 3.0`
@@ -335,7 +335,7 @@ Update-Database
 
 ### Try the Get Actions of the controller
 
-In Visual Studio, press `CTRL+F5` to launch the app. Visual Studio launches a browser and navigates to http://localhost:port/api/weatherforecast, where port is a randomly chosen port number. Navigate to the Products controller at `http://localhost:port/api/products`.
+In Visual Studio, press `CTRL+F5` to launch the app. Visual Studio launches a browser and navigates to http://localhost:port/weatherforecast, where port is a randomly chosen port number. Navigate to the Products controller at `http://localhost:port/api/products`.
 
 You should see an empty JSON array. 
 
@@ -343,11 +343,11 @@ You should see an empty JSON array.
 
 This tutorial uses Postman to test the web API.
 
--Install [Postman](https://www.getpostman.com/downloads/)
--Start the web app.
--Start Postman.
--Disable SSL certificate verification
--From File > Settings (*General tab), disable SSL certificate verification.
+- Install [Postman](https://www.getpostman.com/downloads/)
+- Start the web app.
+- Start Postman.
+- Disable SSL certificate verification
+- From File > Settings (*General tab), disable SSL certificate verification.
 
 ### Use Postman to send a Create request
 
