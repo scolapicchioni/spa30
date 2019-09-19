@@ -35,8 +35,6 @@ namespace BackEnd {
                         .AllowAnyMethod()
                 )
             );
-
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,9 +47,9 @@ namespace BackEnd {
 
             app.UseRouting();
 
-            app.UseCors("frontend");
-
             app.UseAuthorization();
+
+            app.UseCors("frontend");
 
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();

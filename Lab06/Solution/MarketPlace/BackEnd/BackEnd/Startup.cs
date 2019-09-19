@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using BackEnd.Models;
+using IdentityServer4.AccessTokenValidation;
 
 namespace BackEnd {
     public class Startup {
@@ -36,7 +37,14 @@ namespace BackEnd {
                 )
             );
 
-            
+            services.AddAuthentication("Bearer")
+                .AddJwtBearer("Bearer", options => {
+                    options.Authority = "http://localhost:5000";
+                    options.RequireHttpsMetadata = false;
+
+                    options.Audience = "backend";
+                });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +58,8 @@ namespace BackEnd {
             app.UseRouting();
 
             app.UseCors("frontend");
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
