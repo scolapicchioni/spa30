@@ -45,7 +45,7 @@ Now that we have a project, we need to cofigure it for our own purposes.
 
 In your project, open the `Config.cs` file located in the root of your project.
 
-Our [Resource](https://identityserver4.readthedocs.io/en/release/topics/resources.html) has already been configured, so we don't need to change that.
+Our [Resource](https://identityserver4.readthedocs.io/en/latest/topics/resources.html) has already been configured, so we don't need to change that.
 
 ```cs
 public static IEnumerable<IdentityResource> GetIdentityResources() {
@@ -73,7 +73,7 @@ public static IEnumerable<ApiResource> GetApiResources(){
 }
 ```
 
-The second thing we need to configure is the [Javascript Client](https://identityserver4.readthedocs.io/en/release/topics/clients.html)
+The second thing we need to configure is the [Javascript Client](https://identityserver4.readthedocs.io/en/latest/topics/clients.html)
 - Locate the `GetClients` method.
 - Remove every client except for the last one (`spa`)
 - Change the `ClientId` to `frontend`
@@ -197,7 +197,7 @@ Locate the `Configure` method and add the following code right before the `app.U
 app.UseAuthentication();
 ```
 
-The last step is to protect the `Create` action of our `ProductsController` by using the [Authorize](https://docs.microsoft.com/en-us/aspnet/core/security/authorization/simple) attribute.
+The last step is to protect the `Create` action of our `ProductsController` by using the [Authorize](https://docs.microsoft.com/en-us/aspnet/core/security/authorization/simple?view=aspnetcore-3.0) attribute.
 
 Open your `ProductsController` class, locate the `PostProduct` method and add the `[Authorize]` attribute right before the definition of the method:
 
@@ -221,65 +221,6 @@ The API is now protected by IdentityServer.
 The third part requires the configuration of our client project.
 
 Let's begin by testing if the create still works. Run all the three projects, then try to post a new product using our client application. You should see that the product is not added, while you  should still be able to get the list of all products, and also to get the details, modify and delete a specific product.
-
-The user does not get any warning, though. Let's fix this. We need to:
-- Add a component to show an error message
-- Modify the data layer to return the error message
-- Modify the Create View to show the message instead of going to the home route
-
-### Add a component to show an error message
-
-We're going to add a [Snackbar](https://material.io/components/web/catalog/snackbars/) to our `App` View, so that we can also use it from other views. The Snackbar is available as [MDC Adapter Component](https://stasson.github.io/vue-mdc-adapter/#/component/snackbar).
-
-Open your `App.vue` component and locate the `<main>` section.
-Add a `<mdc-snackbar />` tag right before the `<\main>` closing tag.
-
-### Modify the data layer to return the error message
-
-Right now our datalayer is not dealing with any problem. We need to change its behavior so that it checks wether the response status is a 201 or not. We expect a 201 (Created) if everything goes fine. Any other number would mean something went wrong. In that case we're going to return the statusMessage. It will be the view's responsibility to show it to the user.
-
-Open the `datalayer.js` file, locate the `insertProduct` method and replace its code with
-
-```js
-async insertProduct (product) {
-  const response = await fetch(this.serviceUrl, {
-    method: 'POST',
-    body: JSON.stringify(product),
-    headers: new Headers({
-    'Content-Type': 'application/json'
-    })
-  })
-  let result
-  if (response.status !== 201) {
-    result = response.statusText
-  } else {
-    result = await response.json()
-  }
-  return result
-}
-```
-
-### Modify the Create View to show the message instead of going to the home route
-
-We can now inform the user of one of the many problems that could result from an incorrect state. We will set the stage to deal with different results, but we will focus on the `Unauthorized` message and, of course, on the *happy path*. The default behavior will be to push the state of the router as we did before, but, in case the result of the insertProduct method of the datalayer is `Unauthorized`, we will emit the `show-snackbar` event passing the message we got as a result.
-
-Open the `CreateView.vue` file, locate the `insertProduct` method and replace its code with the following:
-  
-```js
-async insertProduct () {
-  const result = await datalayer.insertProduct(this.product)
-  switch (result) {
-    case 'Unauthorized':
-        this.$root.$emit('show-snackbar', { message: result })
-        break
-    default:
-        this.$router.push({name: 'HomeView'})
-        break
-  }
-}
-```   
-
-If you try to add a new product, you should now see an `Unauthorized` error message popping up from the bottom of the page.
 
 What we need to do is to give the user the chance to log in, get the tokens from Identity Server and add the access token to the post request in order to be authorized.
 The process of configuring a javascript client is described in the 
