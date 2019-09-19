@@ -5,7 +5,7 @@ The Authentication Server that we're going to use implements [OAuth 2.0 and IDCo
 
 ## The Authentication Server
 
-We are going to use [Identity Server 4](https://identityserver4.readthedocs.io/en/release/index.html)
+We are going to use [Identity Server 4](https://identityserver4.readthedocs.io/en/latest/index.html)
 
 We are going to use the [Templates](https://github.com/IdentityServer/IdentityServer4.Templates)
 
@@ -37,7 +37,7 @@ dotnet new is4aspid --allow-scripts yes --force
 - You will get two users: alice and bob - both with password Pass123$.
 
 - Open Visual Studio
-- Open the project youu just created in the `Lab06\Solution\MarketPlace\IdentityProvider` folder
+- Open the project you just created in the `Lab06\Start\MarketPlace\IdentityProvider` folder
 
 ## Identity Provider Configuration
 
@@ -160,7 +160,7 @@ The command we ran to create the project created a SQLite database. If you want 
   - Feel free to explore its structure and content. 
   - You will notice the configuration tables used by IdentityServer, together with the tables for the IdentityDbContext.  
 
-In Visual Studio, run the application and test a user login, by navigating to `http://localhost:5002/Account/Login` and using `alice` or `bob` as UserName and `Pass123$` as password. You should see the user correctly logged on.
+In Visual Studio, run the application and test a user login, by navigating to `http://localhost:5000/Account/Login` and using `alice` or `bob` as UserName and `Pass123$` as password. You should see the user correctly logged on.
 
 ## Configuring the REST Service
 
