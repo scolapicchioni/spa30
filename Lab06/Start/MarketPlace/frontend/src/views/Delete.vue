@@ -6,7 +6,6 @@
         <v-card-text>
         <p>{{ product.description }}</p>
         <p>{{ product.price }}</p>
-        <p>{{ product.userName }}</p>
         </v-card-text>
         <v-card-actions>
             <v-btn @click="deleteProduct" color="warning">DELETE PRODUCT</v-btn>

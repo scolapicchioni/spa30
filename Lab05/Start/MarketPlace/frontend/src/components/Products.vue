@@ -9,7 +9,6 @@
         <v-card-text>
         <p>{{ product.description }}</p>
         <p>{{ product.price }}</p>
-        <p>{{ product.userName }}</p>
         </v-card-text>
         <v-card-actions>
             <v-btn icon :to="{name: 'details', params: {id: product.id}}"><v-icon>mdi-card-bulleted</v-icon></v-btn>

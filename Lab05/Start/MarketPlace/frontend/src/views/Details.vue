@@ -6,7 +6,6 @@
         <v-card-text>
         <p>{{ product.description }}</p>
         <p>{{ product.price }}</p>
-        <p>{{ product.userName }}</p>
         </v-card-text>
         <v-card-actions>
             <v-btn icon :to="{name: 'update', params: {id: product.id}}"><v-icon>mdi-pencil</v-icon></v-btn>

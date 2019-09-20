@@ -146,7 +146,6 @@ The inside of the column will have this:
     <v-card-text>
     <p>{{ product.description }}</p>
     <p>{{ product.price }}</p>
-    <p>{{ product.userName }}</p>
     </v-card-text>
     <v-card-actions>
         <v-btn text :to="{name: 'details', params: {id: product.id}}">details</v-btn>
@@ -169,7 +168,6 @@ The template section of the `Details` component will look pretty much like the `
         <v-card-text>
         <p>{{ product.description }}</p>
         <p>{{ product.price }}</p>
-        <p>{{ product.userName }}</p>
         </v-card-text>
         <v-card-actions>
             <v-btn icon :to="{name: 'update', params: {id: product.id}}"><v-icon>mdi-pencil</v-icon></v-btn>
@@ -259,7 +257,6 @@ The last template we have to change is the one of the `Delete` View, which will 
         <v-card-text>
         <p>{{ product.description }}</p>
         <p>{{ product.price }}</p>
-        <p>{{ product.userName }}</p>
         </v-card-text>
         <v-card-actions>
             <v-btn @click="deleteProduct" color="warning">DELETE PRODUCT</v-btn>
