@@ -9,6 +9,8 @@ We are going to use [Identity Server 4](https://identityserver4.readthedocs.io/e
 
 We are going to use the [Templates](https://github.com/IdentityServer/IdentityServer4.Templates)
 
+**NOTE: At the time of the writing the templates have not yet been updated to .NET core 3, so you may want to go to the [GitHub repo](https://github.com/IdentityServer/IdentityServer4.Templates/tree/master/src/IdentityServer4AspNetIdentity) and clone this it, instead of installing the templates on the command line.**
+
 - Open a command prompt and navigate to your `Labs\Lab06\Start\MarketPlace` folder
 - If you haven't installed the IdentityServer templates yet, do it by typing the following command:
 
@@ -16,22 +18,10 @@ We are going to use the [Templates](https://github.com/IdentityServer/IdentitySe
 dotnet new -i identityserver4.templates
 ```
 
-- Create an empty IdentityServer project by typing the following command: 
+- Create an empty IdentityServer project that uses ASP.NET Identity for user management by typing the following command: 
 
 ```
-dotnet new is4empty --name IdentityProvider
-```
-
-- Go to the IdentityProvider folder by typing the following command:
-
-```
-cd .\IdentityProvider\
-```
-
-- Add a basic IdentityServer that uses ASP.NET Identity for user management by typing the following command:
-
-```
-dotnet new is4aspid --allow-scripts yes --force
+dotnet new is4aspid --allow-scripts
 ```
 
 - You will get two users: alice and bob - both with password Pass123$.

@@ -132,6 +132,8 @@ add the following code:
 app.UseCors("frontend"); 
 ```
 
+### The FrontEnd Views
+
 Now we need to modify our Views to asyncronously wait for our datalayer.
 
 Let's start with our `src/components/Products.vue` component. The `created` method has to become and `async function` and it has to `await` the `getProducts`.
@@ -171,6 +173,20 @@ methods: {
     this.$router.push('/')
   }
 }
+```
+
+Last but not least, let's not forget `src/views/Delete.vue`
+
+```js
+async created () {
+    this.product = await datalayer.getProductById(+this.$route.params.id)
+  },
+  methods: {
+    async deleteProduct () {
+      await datalayer.deleteProduct(+this.$route.params.id)
+      this.$router.push({name: 'home'})
+    }
+  }
 ```
 
 Save and verify that the client can send and receive data to and from the server.

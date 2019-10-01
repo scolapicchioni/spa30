@@ -30,12 +30,12 @@ export default {
       }
     }
   },
-  created () {
-    this.product = datalayer.getProductById(+this.$route.params.id)
+  async created () {
+    this.product = await datalayer.getProductById(+this.$route.params.id)
   },
   methods: {
-    deleteProduct () {
-      datalayer.deleteProduct(+this.$route.params.id)
+    async deleteProduct () {
+      await datalayer.deleteProduct(+this.$route.params.id)
       this.$router.push({name: 'home'})
     }
   }

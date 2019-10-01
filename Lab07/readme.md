@@ -370,8 +370,8 @@ Let's use the props to show the corresponding buttons.
 Let's also transfer the `deleteProduct` method from the `Delete` view to the `Product` component.
 
 ```js
-deleteProduct () {
-    datalayer.deleteProduct(+this.product.id)
+async deleteProduct () {
+    await datalayer.deleteProduct(+this.product.id)
     this.$router.push({name: 'home'})
 }
 ```
@@ -565,9 +565,12 @@ async deleteProduct (id) {
 }
 ```
 
-If you run the application, you should be able to update and delete a product only if the product owner is the currently logged on user.
+This concludes the walkthrough.
+I hope you enjoyed it!
 
-You may have noticed that the `Product` component does not get refreshed whenever we navigate back `Home` after a delete or update. This is due to a little mess we made with the `state` of our data. There are different components using and updating the data and it starts to get complicated to follow what happens when.
+In the next step I plan to use the Camera API to upload a picture of the product.
 
-We'll try to fix the [State Management](https://vuejs.org/v2/guide/state-management.html) in the next lab, using [vuex](https://github.com/vuejs/vuex)
+Stay tuned for updates!
+
+
 
