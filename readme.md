@@ -5,7 +5,7 @@ We're going to build a simple web application where people can manage products t
 - Only authenticated users can add new products.
 - Only a product owner can edit or delete a product.
 
-We are going to build 3 projects. The FrontEnd project will be a Progressive Web Application built using Vuejs and Material Design Components for Vue, while server side we are going to build two .NET Core 3.0 Web Applications using Visual Studio 2019: one will expose a REST API while the second will take care of Authentication.
+We are going to build 3 projects. The FrontEnd project will be a Progressive Web Application built using Vuejs, Vue Router and Vuetify, while server side we are going to build two .NET Core 3.0 Web Applications using Visual Studio 2019: one will expose a REST API while the second will take care of Authentication, using Identity Server 4.
 
 1. FrontEnd Client
    - Javascript (ECMAScript 2015+)
@@ -13,7 +13,7 @@ We are going to build 3 projects. The FrontEnd project will be a Progressive Web
    - CSS 3
    - Vue.js 2
    - Vue Router
-   - Material Design Components for Vue (vuetify)
+   - Vuetify
    - Open Id Connect Client
    - Fetch API
    - Native Camera API
@@ -32,7 +32,7 @@ This project will be responsible to store the data on the server and respond to 
    - Identity Server 4
    - Entity Framework Core
 
-This project will take care of the authentication part. It will issue tokens that will be used by the client application to gain access to the server.
+This project will take care of the authentication part. It will issue JWT tokens that will be used by the client application to gain access to the server.
 
 ## What you already need to know:
 - C#
@@ -54,9 +54,10 @@ This project will take care of the authentication part. It will issue tokens tha
 - PostMan
 - CORS
 - Vue.js
+- Vue Router
 - Fetch API
 - WebPack
-- Material Design Components for Vue (vuetify)
+- Vuetify
 - Authentication and Authorization
 - OAuth 2 and Open Id Connect
 - Identity Server 4
@@ -112,7 +113,7 @@ What you have to do is to open a start folder corresponding to the lab you want 
 - Open `Lab08\Solution\MarketPlace\spaclient` in Visual Studio Code
 - Open a terminal window
 - Type `npm install`
-- Type `npm run dev`
+- Type `npm run serve`
 
 ## To Logon
 
